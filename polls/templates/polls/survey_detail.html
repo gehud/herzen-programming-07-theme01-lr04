@@ -1,0 +1,16 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+    <h1>{{ survey.title }}</h1>
+    <p>Created by: {{ survey.creator.email }}</p>
+
+    {% if survey.questions.all %}
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ survey.questions.first.text }}</h5>
+                <a href="{% url 'survey_vote' survey.pk %}" class="btn btn-primary">Vote Now</a>
+                <a href="{% url 'survey_results' survey.pk %}" class="btn btn-secondary">View Results</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

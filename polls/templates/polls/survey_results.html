@@ -1,0 +1,25 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+    <h1>{{ survey.title }} - Results</h1>
+    <h3>{{ question.text }}</h3>
+
+    <div class="mt-4">
+        {% for result in results %}
+            <div class="mb-3">
+                <h5>{{ result.choice.text }}</h5>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar"
+                         style="width: {{ result.percentage }}%"
+                         aria-valuenow="{{ result.percentage }}"
+                         aria-valuemin="0"
+                         aria-valuemax="100">
+                        {{ result.count }} votes ({{ result.percentage|floatformat:1 }}%)
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'survey_detail' survey.pk %}" class="btn btn-secondary mt-3">Back to Survey</a>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'polls/base.html' %}
+
+{% block content %}
+    <h1>{{ survey.title }}</h1>
+    <h3>{{ question.text }}</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="list-group mb-3">
+            {% for choice in question.choices.all %}
+                <label class="list-group-item">
+                    <input type="radio" name="choice" value="{{ choice.id }}" required>
+                    {{ choice.text }}
+                </label>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Vote</button>
+    </form>
+{% endblock %}
