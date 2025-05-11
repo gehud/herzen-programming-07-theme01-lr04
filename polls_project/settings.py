@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    'polls',
     'accounts',
+    'analytics',
+    'polls',
+
+    'rest_framework',
 
     'allauth',
     'allauth.account',
